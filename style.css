@@ -1,0 +1,170 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0%;
+    padding: 0%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+header{
+    background-color: #6c68f1;
+    color: #f4f2ff;
+    padding: 1rem;
+}
+
+nav{
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------------------------------------ */
+
+.logo-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0%;
+}
+
+#dropDownBtn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #f4f2ff;
+    cursor: pointer;
+    padding: 0%;
+}
+
+#navCont{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#navCont ul {
+    list-style: none;
+    display: flex;
+}
+
+#navCont ul > li {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: .95em;
+    margin: 0rem .5rem;
+    padding: .5rem;
+}
+
+#navCont button {
+    background-color: #5cb9ff;
+    text-transform: uppercase;
+    color: #f4f2ff;
+    font-size: .8em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    /* box-shadow: 1px 1px 10px #333; */
+    padding: .5rem 1rem;
+}
+
+.active{
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: #a9a9ff;
+    border-radius: 100%;
+    margin: 0rem .5rem;
+}
+
+/* -------------------LANDING SECTION------------------------- */
+
+.landing{
+    height: calc(100vh - 70px);
+    background-color: #6c68f1;
+    clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 76%, 80% 93%, 49% 86%, 15% 100%, 0 79%, 0% 35%, 0 0);-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 70%, 81% 86%, 50% 81%, 18% 94%, 0 71%, 0% 35%, 0 0);
+    color: #f4f2ff;
+    padding: 1rem;
+}
+
+.mail-to > a  {
+    width: 170px;
+    display: flex;
+    align-items: center;
+    background-color: #7c78f1;
+    border-radius: 5px;
+    padding: .5rem .2rem;
+}
+
+.mail-to > a > span {
+    background-color: #5cb9ff;
+}
+
+.header-name {
+    font-size: 3em;
+    letter-spacing: 2px;
+}
+
+.intro-text {
+    font-size: 1.5em;
+}
+
+.learn-more {
+    background-color: #5cb9ff;
+    color: #f4f2ff;
+    border: none;
+    border-radius: 7px;
+    padding: 1rem 2rem;
+}
+/* -----------------MEDIA QUERIES-------------------------- */
+
+@media only screen and (max-width: 768px) {
+    header{
+        border-bottom: 2px solid #f4f2ff;
+    }
+
+    nav{
+        display: block;
+    }
+
+    #dropDownBtn{
+        display: inline;
+    }
+
+    #navCont  {
+        display: none;
+    }
+
+    #navCont ul {
+        display: block;
+        padding-inline-start: 0rem;
+    }
+
+    #navCont ul li {
+        margin: 0rem;
+    }
+
+    .logo-name {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* -------------------------------------------- */
+
+    .header-name {
+        font-size: 2rem;
+        margin: 0px;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+    }
+
+}
