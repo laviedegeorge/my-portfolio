@@ -5,7 +5,10 @@
 body{
     margin: 0%;
     padding: 0%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+/*     font-family: 'Roboto Mono', monospace;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', sans-serif; */
 }
 
 header{
@@ -87,9 +90,8 @@ a{
 /* -------------------LANDING SECTION------------------------- */
 
 .landing{
-    height: calc(100vh - 70px);
+    /* height: calc(100vh - 70px); */
     background-color: #6c68f1;
-    clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 76%, 80% 93%, 49% 86%, 15% 100%, 0 79%, 0% 35%, 0 0);-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 70%, 81% 86%, 50% 81%, 18% 94%, 0 71%, 0% 35%, 0 0);
     color: #f4f2ff;
     padding: 1rem;
 }
@@ -123,7 +125,195 @@ a{
     border-radius: 7px;
     padding: 1rem 2rem;
 }
-/* -----------------MEDIA QUERIES-------------------------- */
+
+/* ---------------------------ABOUT ME SECTION------------------------------ */
+.about-me-cont{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color:#333645 ;
+    /* margin: 3rem 0rem; */
+}
+
+.about-me-cont > h2 {
+    text-transform: capitalize;
+    font-size: 3em;
+    margin-top: 0%;
+}
+.about-me-info-cont{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    color: #65656c;
+}
+
+.about-me-info > p {
+    font-size: .95em;
+    margin: 1.5rem auto;
+}
+.about-me-info > p:first-child {
+    margin-top: 0%;
+}
+
+/* -----------------------SERVICES SECTION--------------------------- */
+
+.services-cont {
+    background-color: #fcfbff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-holder{
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 320px);
+    color: #f4f2ff;
+}
+
+.h2 {
+    font-size: 3em;
+    color: #333645;
+    line-height: 2.5em;
+}
+
+.service{
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px;
+}
+.service:nth-child(odd) {
+    background-color: #6a66ef;
+}
+
+.service:nth-child(even) {
+    background-color: #5ab6ff;
+}
+
+.service > p {
+    margin: 10px 0px;
+}
+.service > p:first-child {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.service > p:nth-child(2) {
+    font-size: .85em;
+}
+
+.service > p:last-child {
+    width: 60px;
+    height: 60px;
+    background-color: #f4f2ff;
+    border-radius: 100%;
+    float: right;
+}
+
+.more-services{
+    color: #333645;
+    margin: 20px 0px;
+}
+
+.git-btn {
+    background-color: #5ab6ff;
+    color: #f4f2ff;
+    text-transform: uppercase;
+    font-size: .8em;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+
+/* --------------------------------INTERESTING PROJECT-------------------------------------- */
+
+.inter-project-cont{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #5657e5;
+    color: #f4f2ff;
+}
+
+.inter-project-cont > p:first-child {
+    font-size: 3em;
+    line-height: 2em;
+}
+
+.email-cont{
+    margin: 3em 0em;
+}
+
+.email-cont > input {
+    height: 50px;
+    width: 250px;
+    text-indent: 20px;
+    border-radius: 40px;
+    margin-right: -40px;
+    padding: 5px;
+}
+
+.email-cont > button {
+    height: 50px;
+    width: 80px;
+    background-color: #5ab6ff;
+    color: #f4f2ff;
+    border: none;
+    border-radius: 25px;
+}
+
+/* -----------------------------------RECENT WORKS----------------------------------------------- */
+
+.recent-works-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recent-work-holder{
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+}
+
+.recent-work{
+    height: 250px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #65656c;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.recent-work-pics {
+    height:calc(100% - 20px);
+    background-color: #65656c;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.recent-work-overlay {
+    width:calc(100% - 20px);
+    height:calc(100% - 20px);
+    background-color: RGBA(86, 87, 229, 0.8);
+    color: #f4f2ff;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateX(-110%);
+    border-radius: 5px;
+    transition: .7s all ease-in-out;
+    margin: 10px;
+    padding: 10px;
+}
+
+.recent-work:hover > .recent-work-overlay{
+    transform: translateX(0%);
+}
+/* -----------------------------------------MEDIA QUERIES---------------------------------- */
 
 @media only screen and (max-width: 768px) {
     header{
@@ -156,7 +346,7 @@ a{
         justify-content: space-between;
     }
 
-    /* -------------------------------------------- */
+    /* --------------------LANDING SECTION-------------- */
 
     .header-name {
         font-size: 2rem;
@@ -165,6 +355,12 @@ a{
 
     .intro-text {
         font-size: 1rem;
+    }
+
+    /* ---------------ABOUT ME SECTION -------------- */
+
+    .about-me-info-cont {
+        display: block;
     }
 
 }
