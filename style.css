@@ -175,6 +175,7 @@ a{
     font-size: 3em;
     color: #333645;
     line-height: 2.5em;
+    text-transform: capitalize;
 }
 
 .service{
@@ -362,5 +363,15 @@ a{
     .about-me-info-cont {
         display: block;
     }
+    /* -------------------SERVICE SECTION -------------------------- */
 
+    .service-holder {
+        max-width: unset;
+    }
+
+    /* -----------------------RECENT WORKS----------------------------- */
+
+    .recent-work-holder{
+        max-width: unset;
+    }
 }
