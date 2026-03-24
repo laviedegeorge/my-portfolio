@@ -170,8 +170,9 @@ export function Footer() {
           <p className="text-slate-600 text-[11px] font-mono tracking-wide">
             © 2026 LCA Consulting. All rights reserved.
           </p>
+
           <div className="flex items-center gap-1">
-            {["Privacy Policy", "Terms of Service"].map((item, i) => (
+            {["Privacy Policy", "Terms of Service"].map((item) => (
               <a
                 key={item}
                 href="#"
@@ -182,6 +183,21 @@ export function Footer() {
               </a>
             ))}
           </div>
+
+          <a
+            href="https://github.com/laviedegeorge"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 border border-white/5 hover:border-orange-500/30 hover:bg-orange-500/5 px-3 py-1.5 rounded-lg transition-all duration-200"
+          >
+            <span className="text-slate-600 group-hover:text-slate-400 text-[11px] font-mono tracking-wide transition-colors duration-200">
+              Built by
+            </span>
+            <span className="text-slate-400 group-hover:text-orange-400 text-[11px] font-mono font-semibold tracking-wide transition-colors duration-200">
+              laviedegeorge
+            </span>
+            <ArrowUpRight className="w-2.5 h-2.5 text-white/20 group-hover:text-orange-400/60 transition-colors duration-200" />
+          </a>
         </div>
       </div>
     </footer>
