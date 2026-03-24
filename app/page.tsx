@@ -3,6 +3,7 @@ import { Footer } from "@/components/layouts/footer";
 import { Header } from "@/components/layouts/header";
 import { AboutUs } from "@/components/sections/landing-page/about-us";
 import { Hero } from "@/components/sections/landing-page/hero";
+import { Services } from "@/components/sections/landing-page/services";
 import { VisionMission } from "@/components/sections/landing-page/vision-mission";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <VisionMission />
         <AboutUs />
+        <Services />
       </main>
       <Footer />
     </div>
