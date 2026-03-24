@@ -2,6 +2,7 @@
 import { Footer } from "@/components/layouts/footer";
 import { Header } from "@/components/layouts/header";
 import { AboutUs } from "@/components/sections/landing-page/about-us";
+import { ClientsPartners } from "@/components/sections/landing-page/client-partners";
 import { Hero } from "@/components/sections/landing-page/hero";
 import { Services } from "@/components/sections/landing-page/services";
 import { VisionMission } from "@/components/sections/landing-page/vision-mission";
@@ -17,6 +18,7 @@ export default function Home() {
         <AboutUs />
         <Services />
         <WhyChooseUs />
+        <ClientsPartners />
       </main>
       <Footer />
     </div>
