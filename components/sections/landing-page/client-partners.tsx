@@ -76,7 +76,6 @@ function getVisible(active: number, total: number, count: number) {
   }));
 }
 
-// Dummy SVG logo for each partner
 function PartnerLogo({
   color,
   initials,
@@ -105,7 +104,6 @@ function PartnerLogo({
         strokeOpacity="0.3"
         strokeWidth="1.5"
       />
-      {/* Simple abstract mark */}
       <circle cx="24" cy="16" r="5" fill={color} fillOpacity="0.7" />
       <rect
         x="14"
@@ -148,48 +146,39 @@ export function ClientsPartners() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gray-50 py-24">
+    <section className="relative overflow-hidden bg-gray-50 py-20 sm:py-28 lg:py-36">
       {/* Warm background glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-100/80 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl px-6">
-        {/* ── Header ── */}
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* ── Header — design system ── */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-80px" }}
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 lg:mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8"
         >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.65,
-              delay: 0.08,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            viewport={{ once: true }}
-            className="mb-4 text-4xl font-extrabold tracking-tight text-slate-900 lg:text-5xl"
-          >
-            Clients &amp; Partners
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              delay: 0.18,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            viewport={{ once: true }}
-            className="mx-auto max-w-md text-lg text-slate-500"
-          >
-            Trusted by leading organizations worldwide
-          </motion.p>
+          <div>
+            <div className="flex items-center gap-2 mb-4 sm:mb-5">
+              <span className="w-6 h-px bg-orange-500" />
+              <span className="text-orange-500 font-mono text-xs tracking-[0.2em] uppercase">
+                Our Network
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 leading-[1.05] tracking-tight">
+              Clients &amp;
+              <br />
+              <span className="text-orange-500">partners</span>
+            </h2>
+          </div>
+          <p className="text-slate-500 text-sm sm:text-base max-w-xs leading-relaxed lg:text-right">
+            Trusted by leading organisations worldwide — built on results,
+            sustained by relationships.
+          </p>
         </motion.div>
 
-        {/* ── Carousel ── */}
+        {/* ── Carousel — unchanged ── */}
         <motion.div
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -225,10 +214,9 @@ export function ClientsPartners() {
                 const isSide = abs === 1;
                 const isFar = abs === 2;
 
-                // Visual weights
                 const scale = isCenter ? 1 : isSide ? 0.88 : 0.76;
                 const opacity = isCenter ? 1 : isSide ? 0.6 : 0.3;
-                const blur = isCenter ? 0 : isSide ? 1.5 : 3; // px
+                const blur = isCenter ? 0 : isSide ? 1.5 : 3;
                 const zIndex = isCenter ? 10 : isSide ? 5 : 1;
 
                 const partner = partners[partnerIdx];
@@ -259,13 +247,11 @@ export function ClientsPartners() {
                           : "hidden h-24 w-36 border-gray-200 shadow-sm xl:block",
                     )}
                   >
-                    {/* Active glow overlay */}
                     {isCenter && (
                       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(249,115,22,0.1),transparent_65%)]" />
                     )}
 
                     <div className="relative z-10 flex h-full flex-col items-center justify-center gap-2 px-4">
-                      {/* Logo */}
                       <motion.div
                         animate={{ scale: isCenter ? 1 : 0.85 }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -277,7 +263,6 @@ export function ClientsPartners() {
                         />
                       </motion.div>
 
-                      {/* Name */}
                       <span
                         className={cn(
                           "text-center font-bold leading-tight tracking-tight",
@@ -289,7 +274,6 @@ export function ClientsPartners() {
                         {partner.name}
                       </span>
 
-                      {/* Tagline — only on active */}
                       <AnimatePresence mode="wait">
                         {isCenter && (
                           <motion.span
