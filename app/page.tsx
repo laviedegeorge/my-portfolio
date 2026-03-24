@@ -5,6 +5,7 @@ import { AboutUs } from "@/components/sections/landing-page/about-us";
 import { Hero } from "@/components/sections/landing-page/hero";
 import { Services } from "@/components/sections/landing-page/services";
 import { VisionMission } from "@/components/sections/landing-page/vision-mission";
+import { WhyChooseUs } from "@/components/sections/landing-page/why-choose-us";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <VisionMission />
         <AboutUs />
         <Services />
+        <WhyChooseUs />
       </main>
       <Footer />
     </div>
