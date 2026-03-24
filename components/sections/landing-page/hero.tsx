@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -8,9 +7,9 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center bg-linear-to-br from-slate-900 via-slate-800 to-slate-900"
+      className="relative min-h-screen flex items-center bg-slate-900 overflow-hidden"
     >
-      {/* Background Image Overlay */}
+      {/* Background Image */}
       <div
         className="absolute inset-0 opacity-20"
         style={{
@@ -20,69 +19,117 @@ export function Hero() {
         }}
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-slate-900/90 to-slate-800/70" />
+      {/* Directional gradient */}
+      <div className="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/80 to-slate-800/60" />
 
       {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl">
-          {/* Orange accent bar */}
+          {/* Label row — mirrors Team's "Our People" eyebrow */}
           <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: 80 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-linear-to-r from-orange-500 to-yellow-500 mb-8"
-          />
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center gap-2 mb-5"
           >
-            Empowering Your Business with{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-yellow-400">
-              Expert Insights
-            </span>{" "}
-            and Tailored Solutions
+            <span className="w-6 h-px bg-orange-500" />
+            <span className="text-orange-500 font-mono text-xs tracking-[0.2em] uppercase">
+              Business Consulting
+            </span>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.35,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6"
+          >
+            Empowering your
+            <br />
+            business with{" "}
+            <span className="text-orange-500">expert insights</span>
           </motion.h1>
 
+          {/* Body */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg lg:text-xl text-gray-300 mb-8 max-w-2xl"
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="text-slate-400 text-sm sm:text-base max-w-sm leading-relaxed mb-10 font-mono"
           >
-            We deliver innovative strategies and customized solutions to help
-            your business thrive in today's competitive landscape.
+            Innovative strategies and customised solutions to help your business
+            thrive in today's competitive landscape.
           </motion.p>
 
+          {/* CTAs — styled to match the card button system */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4"
+            transition={{
+              duration: 0.7,
+              delay: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="flex flex-col sm:flex-row gap-3"
           >
-            <Button
-              size="lg"
-              className="bg-linear-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold"
-            >
+            {/* Primary — orange filled */}
+            <button className="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white px-6 py-3 rounded-lg text-[13px] font-mono tracking-wide transition-all duration-200">
               Get Started
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
-            >
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+
+            {/* Secondary — card ghost style */}
+            <button className="flex items-center justify-center gap-2 border border-white/10 hover:border-orange-500/50 hover:bg-orange-500/10 text-white/60 hover:text-orange-400 px-6 py-3 rounded-lg text-[13px] font-mono tracking-wide transition-all duration-200">
               Learn More
-            </Button>
+            </button>
           </motion.div>
+
+          {/* Stats row */}
+          {/* <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.85,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="flex gap-8 mt-16"
+          >
+            {[
+              { value: "12+", label: "Years Experience" },
+              { value: "340+", label: "Clients Served" },
+              { value: "98%", label: "Satisfaction Rate" },
+            ].map((stat, i) => (
+              <div key={i} className="flex flex-col gap-1">
+                <span className="text-2xl font-bold text-white tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="text-[10px] font-mono text-slate-500 tracking-[0.15em] uppercase">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </motion.div> */}
         </div>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-white to-transparent" />
+      {/* Index watermark — decorative, mirrors card numbering aesthetic */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 1 }}
+        className="absolute bottom-12 right-8 lg:right-16 text-white/5 font-mono text-[120px] lg:text-[180px] font-bold leading-none select-none pointer-events-none"
+      >
+        01
+      </motion.div>
+
+      {/* Bottom fade into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-gray-50 to-transparent" />
     </section>
   );
 }
