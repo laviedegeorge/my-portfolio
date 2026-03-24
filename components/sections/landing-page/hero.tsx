@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center bg-slate-900 overflow-hidden"
+      className="relative min-h-screen flex items-center bg-slate-900 overflow-hidden pt-16 lg:pt-20"
     >
       {/* Background Image */}
       <div
