@@ -7,45 +7,55 @@ const values = [
     icon: Heart,
     label: "Integrity",
     letter: "I",
+    tag: "Principle",
+    index: "01",
     color: "from-red-500 to-pink-500",
+    bgColor: "bg-gradient-to-br from-red-500 to-pink-500",
     description:
-      "Operating with honesty and strong moral principles in all our actions",
-    bgColor: "bg-linear-to-br from-red-500 to-pink-500",
+      "Operating with honesty and strong moral principles in all our actions.",
   },
   {
     icon: Users,
     label: "Collaboration",
     letter: "C",
+    tag: "Culture",
+    index: "02",
     color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-gradient-to-br from-blue-500 to-cyan-500",
     description:
-      "Working together to achieve shared goals and create lasting partnerships",
-    bgColor: "bg-linear-to-br from-blue-500 to-cyan-500",
+      "Working together to achieve shared goals and create lasting partnerships.",
   },
   {
     icon: Lightbulb,
     label: "Innovation",
     letter: "I",
+    tag: "Thinking",
+    index: "03",
     color: "from-yellow-500 to-orange-500",
+    bgColor: "bg-gradient-to-br from-yellow-500 to-orange-500",
     description:
-      "Embracing creative thinking and cutting-edge solutions for our clients",
-    bgColor: "bg-linear-to-br from-yellow-500 to-orange-500",
+      "Embracing creative thinking and cutting-edge solutions for our clients.",
   },
   {
     icon: Shield,
     label: "Excellence",
     letter: "E",
+    tag: "Standard",
+    index: "04",
     color: "from-purple-500 to-indigo-500",
-    description: "Maintaining the highest standards in everything we deliver",
-    bgColor: "bg-linear-to-br from-purple-500 to-indigo-500",
+    bgColor: "bg-gradient-to-br from-purple-500 to-indigo-500",
+    description: "Maintaining the highest standards in everything we deliver.",
   },
   {
     icon: Target,
     label: "Results",
     letter: "R",
+    tag: "Impact",
+    index: "05",
     color: "from-green-500 to-emerald-500",
+    bgColor: "bg-gradient-to-br from-green-500 to-emerald-500",
     description:
-      "Focusing on measurable outcomes that drive real business impact",
-    bgColor: "bg-linear-to-br from-green-500 to-emerald-500",
+      "Focusing on measurable outcomes that drive real business impact.",
   },
 ];
 
@@ -55,172 +65,268 @@ export function Values() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % values.length);
-    }, 4000); // Change every 4 seconds
-
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <section className="py-20 lg:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-          {/* Left Side - Animated Letters */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="relative flex items-center justify-center py-12"
-          >
-            <div className="relative w-full max-w-md mx-auto">
-              {/* Background decorative elements */}
-              <div className="absolute inset-0 bg-linear-to-br from-orange-100 to-yellow-100 rounded-3xl transform -rotate-6 opacity-50" />
-              <div className="absolute inset-0 bg-linear-to-br from-orange-50 to-yellow-50 rounded-3xl transform rotate-3 opacity-50" />
+  const active = values[activeIndex];
 
-              {/* Main content */}
-              <div className="relative bg-white rounded-3xl shadow-2xl p-8 lg:p-12 border-2 border-orange-100">
-                {/* Large animated letter */}
+  return (
+    <section className="py-20 sm:py-28 lg:py-36 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="mb-12 sm:mb-16 lg:mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8"
+        >
+          <div>
+            <div className="flex items-center gap-2 mb-4 sm:mb-5">
+              <span className="w-6 h-px bg-orange-500" />
+              <span className="text-orange-500 font-mono text-xs tracking-[0.2em] uppercase">
+                What Drives Us
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 leading-[1.05] tracking-tight">
+              Our core
+              <br />
+              <span className="text-orange-500">values</span>
+            </h2>
+          </div>
+          <p className="text-slate-500 text-sm sm:text-base max-w-xs leading-relaxed lg:text-right">
+            The principles that guide our decisions, shape our culture, and
+            define how we serve every client.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* ── Left: Animated letter card ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: "-80px" }}
+            className="relative"
+          >
+            {/* Animated skewed border — matches AboutUs / WhyChooseUs */}
+            <motion.div
+              animate={{ rotate: [3, 5, 3] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-0 rounded-2xl bg-linear-to-br from-orange-500/20 to-yellow-500/10 border border-orange-500/20"
+            />
+            <div className="absolute inset-0 rounded-2xl border border-slate-100 -rotate-1 scale-[1.01]" />
+
+            {/* Card */}
+            <div className="relative bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
+              {/* Dark top band — same as VisionMission */}
+              <div className="relative h-48 sm:h-56 bg-slate-900 flex items-center justify-center overflow-hidden">
+                {/* Grid texture */}
+                <div
+                  className="absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage:
+                      "repeating-linear-gradient(0deg,#fff 0px,#fff 1px,transparent 1px,transparent 40px),repeating-linear-gradient(90deg,#fff 0px,#fff 1px,transparent 1px,transparent 40px)",
+                  }}
+                />
+
+                {/* Glow */}
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
-                    initial={{ opacity: 0, scale: 0.5, rotateY: -180 }}
-                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                    exit={{ opacity: 0, scale: 0.5, rotateY: 180 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-6"
-                  >
-                    <div
-                      className={`inline-flex items-center justify-center w-32 h-32 lg:w-40 lg:h-40 rounded-3xl ${values[activeIndex].bgColor} shadow-2xl mb-4`}
-                    >
-                      <span className="text-6xl lg:text-8xl font-bold text-white">
-                        {values[activeIndex].letter}
-                      </span>
-                    </div>
-                  </motion.div>
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className={`absolute inset-0 opacity-10 ${active.bgColor}`}
+                  />
                 </AnimatePresence>
 
-                {/* Small letter indicators */}
-                <div className="flex justify-center gap-3 flex-wrap">
-                  {values.map((value, index) => {
-                    const Icon = value.icon;
+                {/* Tag badge */}
+                <div className="absolute top-4 left-4">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={activeIndex}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-white/10 backdrop-blur-sm border border-white/10 text-slate-300 text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full"
+                    >
+                      {active.tag}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+
+                {/* Index */}
+                <div className="absolute top-4 right-4 text-white/20 font-mono text-xs">
+                  {active.index}
+                </div>
+
+                {/* Big letter */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, scale: 0.6, rotateY: -90 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, scale: 0.6, rotateY: 90 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className={`w-24 h-24 sm:w-28 sm:h-28 rounded-2xl ${active.bgColor} flex items-center justify-center shadow-2xl`}
+                  >
+                    <span className="text-6xl sm:text-7xl font-bold text-white leading-none">
+                      {active.letter}
+                    </span>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Dark footer — identical to all other cards */}
+              <div className="p-5 bg-slate-900 relative">
+                {/* Hover accent line */}
+                <div className="absolute top-0 left-5 right-5 h-px bg-linear-to-r from-transparent via-orange-500/70 to-transparent" />
+
+                {/* Icon selector row */}
+                <div className="flex items-center gap-2 mb-4 flex-wrap">
+                  {values.map((v, i) => {
+                    const Icon = v.icon;
                     return (
                       <button
-                        key={index}
-                        onClick={() => setActiveIndex(index)}
-                        className={`relative transition-all duration-300 ${
-                          index === activeIndex
-                            ? "scale-110"
-                            : "scale-100 opacity-60 hover:opacity-100"
+                        key={i}
+                        onClick={() => setActiveIndex(i)}
+                        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 ${
+                          i === activeIndex
+                            ? `${v.bgColor} shadow-md scale-110`
+                            : "bg-white/5 border border-white/10 hover:border-orange-500/30"
                         }`}
                       >
-                        <div
-                          className={`w-12 h-12 lg:w-14 lg:h-14 rounded-xl ${value.bgColor} flex items-center justify-center shadow-lg ${
-                            index === activeIndex
-                              ? "ring-4 ring-offset-2 ring-orange-300"
-                              : ""
-                          }`}
-                        >
-                          <Icon className="w-6 h-6 text-white" />
-                        </div>
+                        <Icon
+                          className={`w-3.5 h-3.5 ${i === activeIndex ? "text-white" : "text-white/30"}`}
+                        />
                       </button>
                     );
                   })}
                 </div>
 
-                {/* Animated value name */}
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-center mt-6"
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <h3
-                      className={`text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r ${values[activeIndex].color}`}
-                    >
-                      {values[activeIndex].label}
+                    <h3 className="text-[15px] font-semibold text-white leading-snug">
+                      {active.label}
                     </h3>
+                    <p className="text-orange-400 text-xs mt-0.5 font-mono">
+                      Core value
+                    </p>
                   </motion.div>
                 </AnimatePresence>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side - Content */}
+          {/* ── Right: Active value detail ── */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.7,
+              delay: 0.15,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            viewport={{ once: true, margin: "-80px" }}
+            className="flex flex-col gap-4"
           >
-            <div className="inline-block bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-6">
-              <span className="text-orange-600 font-semibold text-sm">
-                WHAT DRIVES US
-              </span>
-            </div>
+            {/* Stacked value rows */}
+            {values.map((value, i) => {
+              const Icon = value.icon;
+              const isActive = i === activeIndex;
+              return (
+                <motion.button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className={`group w-full text-left relative rounded-2xl overflow-hidden border transition-all duration-300 ${
+                    isActive
+                      ? "bg-slate-900 border-orange-500/30 shadow-lg"
+                      : "bg-white border-slate-100 hover:border-slate-200 hover:shadow-sm"
+                  }`}
+                >
+                  {/* Active accent line */}
+                  {isActive && (
+                    <div className="absolute top-0 left-5 right-5 h-px bg-linear-to-r from-transparent via-orange-500/70 to-transparent" />
+                  )}
 
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Our Core Values
-            </h2>
-
-            <p className="text-gray-700 text-lg mb-8 leading-relaxed">
-              Our values are the foundation of everything we do. They guide our
-              decisions, shape our culture, and define how we serve our clients.
-            </p>
-
-            {/* Active Value Display */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="bg-linear-to-br from-slate-50 to-gray-100 rounded-2xl p-6 lg:p-8 border-2 border-orange-200"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div
-                    className={`${values[activeIndex].bgColor} p-4 rounded-lg shrink-0`}
-                  >
-                    {(() => {
-                      const Icon = values[activeIndex].icon;
-                      return <Icon className="w-8 h-8 text-white" />;
-                    })()}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2">
-                      {values[activeIndex].label}
-                    </h4>
-                    <p className="text-gray-700 leading-relaxed">
-                      {values[activeIndex].description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Progress Indicator */}
-                <div className="flex gap-2 mt-6">
-                  {values.map((value, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveIndex(index)}
-                      className="relative h-1.5 flex-1 bg-gray-300 rounded-full overflow-hidden"
-                      aria-label={`Select ${value.label}`}
+                  <div className="flex items-start gap-4 p-4 sm:p-5">
+                    {/* Index */}
+                    <span
+                      className={`font-mono text-[10px] mt-0.5 shrink-0 ${isActive ? "text-orange-500/60" : "text-slate-300"}`}
                     >
-                      <motion.div
-                        className={`absolute inset-0 bg-linear-to-r ${value.color}`}
-                        initial={{ width: 0 }}
-                        animate={{ width: index === activeIndex ? "100%" : 0 }}
-                        transition={{
-                          duration: index === activeIndex ? 4 : 0.3,
-                        }}
+                      {value.index}
+                    </span>
+
+                    {/* Icon */}
+                    <div
+                      className={`p-2 rounded-lg shrink-0 transition-all duration-300 ${isActive ? value.bgColor : "bg-slate-100"}`}
+                    >
+                      <Icon
+                        className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-slate-400"}`}
                       />
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <p
+                        className={`text-[13px] font-semibold leading-snug ${isActive ? "text-white" : "text-slate-700"}`}
+                      >
+                        {value.label}
+                      </p>
+
+                      <AnimatePresence>
+                        {isActive && (
+                          <motion.p
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{
+                              duration: 0.3,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="text-slate-400 text-xs font-mono leading-relaxed mt-1 overflow-hidden"
+                          >
+                            {value.description}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Tag badge — right side */}
+                    <span
+                      className={`text-[10px] font-mono tracking-widest uppercase shrink-0 px-2 py-0.5 rounded-full border ${
+                        isActive
+                          ? "border-white/10 text-slate-400 bg-white/5"
+                          : "border-slate-200 text-slate-400"
+                      }`}
+                    >
+                      {value.tag}
+                    </span>
+                  </div>
+
+                  {/* Progress bar */}
+                  {isActive && (
+                    <div className="h-px bg-white/5 mx-5">
+                      <motion.div
+                        className={`h-full bg-linear-to-r ${value.color}`}
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: 4, ease: "linear" }}
+                      />
+                    </div>
+                  )}
+                </motion.button>
+              );
+            })}
           </motion.div>
         </div>
       </div>
