@@ -6,6 +6,8 @@ import Impact from "@/components/sections/landing-page/impact";
 import NCD from "@/components/sections/landing-page/ncd";
 import Outreach from "@/components/sections/landing-page/outreach";
 import Programs from "@/components/sections/landing-page/programs";
+import Resources from "@/components/sections/landing-page/resources";
+import Testimonials from "@/components/sections/landing-page/testimonials";
 
 export default function Home() {
   return (
@@ -19,6 +21,8 @@ export default function Home() {
         <NCD />
         <Outreach />
         <HealthQuiz />
+        <Resources />
+        <Testimonials />
       </main>
     </>
   );
