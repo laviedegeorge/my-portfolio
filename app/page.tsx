@@ -1,4 +1,7 @@
+import Footer from "@/components/layouts/footer";
 import Header from "@/components/layouts/header";
+import MobileCtaBar from "@/components/layouts/mobile-cta";
+import WhatsAppFloat from "@/components/layouts/whatsapp-float";
 import About from "@/components/sections/landing-page/about-us";
 import Contact from "@/components/sections/landing-page/contact";
 import HealthQuiz from "@/components/sections/landing-page/health-quiz";
@@ -30,6 +33,9 @@ export default function Home() {
         <Involved />
         <Contact />
       </main>
+      <Footer />
+      <WhatsAppFloat />
+      <MobileCtaBar />
     </>
   );
 }
