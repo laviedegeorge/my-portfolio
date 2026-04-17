@@ -9,23 +9,35 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        /* ComHealth primary — solid forest green */
+        default:
+          "bg-forest-500 text-white shadow-lg shadow-forest-500/20 hover:bg-forest-400 hover:shadow-forest-400/30 hover:-translate-y-0.5 rounded-xl",
+        /* ShadCN destructive */
         destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-destructive text-white shadow-sm hover:bg-destructive/90 rounded-xl",
+        /* Ghost — dark surface variant */
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border border-white/15 bg-transparent text-white/60 hover:border-forest-500/50 hover:bg-forest-500/10 hover:text-forest-300 rounded-xl",
+        /* Ghost on light surface */
+        "outline-light":
+          "border border-forest-500/30 bg-transparent text-forest-600 hover:border-forest-500 hover:bg-forest-500/5 rounded-xl",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-xl",
+        ghost: "hover:bg-accent hover:text-accent-foreground rounded-xl",
+        link: "text-forest-500 underline-offset-4 hover:underline",
+        /* WhatsApp */
+        whatsapp:
+          "bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:bg-[#20b857] hover:-translate-y-0.5 rounded-xl",
+        /* Dark nav CTA */
+        "nav-cta": "bg-forest-500 text-white hover:bg-forest-400 rounded-xl",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        default: "h-9 px-5 py-2 text-[12px]",
+        sm: "h-8 px-3 py-1.5 text-[11px]",
+        lg: "h-11 px-7 py-3.5 text-[13px]",
+        xl: "h-12 px-8 py-4 text-[13px]",
         icon: "size-9",
+        xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
         "icon-xs": "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-8",
         "icon-lg": "size-10",
