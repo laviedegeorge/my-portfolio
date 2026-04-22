@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useInView } from "motion/react";
 import { useTheme } from "next-themes";
