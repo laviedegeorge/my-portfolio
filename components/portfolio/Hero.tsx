@@ -1,13 +1,18 @@
 "use client";
 import { motion } from "motion/react";
 import { siteConfig, stats } from "@/lib/portfolio-data";
+import ScrollIndicator from "./ScrollIndicator";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
   return (
-    <section aria-label="Introduction" className="relative z-10">
-      <div className="max-w-185 px-9 pb-12 pt-16">
+    <section
+      aria-label="Introduction"
+      className="relative z-10 flex flex-1 flex-col"
+    >
+      {/* ── Content ── */}
+      <div className="max-w-185 px-9 pb-10 pt-16">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,6 +119,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* ── Stats strip ── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -142,6 +148,9 @@ export default function Hero() {
           </div>
         ))}
       </motion.div>
+
+      {/* ── Scroll indicator ── */}
+      <ScrollIndicator targetId="experience" />
     </section>
   );
 }

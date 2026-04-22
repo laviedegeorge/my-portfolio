@@ -17,7 +17,7 @@ export default function Section({ id, label, children }: SectionProps) {
       id={id}
       ref={ref}
       aria-labelledby={`${id}-heading`}
-      className="relative z-10 px-9 py-14"
+      className="relative z-10 px-9 py-20"
       style={{ borderTop: "1px solid var(--border)" }}
     >
       <h2 id={`${id}-heading`} className="sr-only">
