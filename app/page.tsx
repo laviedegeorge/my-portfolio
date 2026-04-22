@@ -3,6 +3,7 @@ import { useThemeVars } from "@/lib/use-theme-vars";
 import GridCanvas from "@/components/portfolio/GridCanvas";
 import NavBar from "@/components/portfolio/NavBar";
 import Hero from "@/components/portfolio/Hero";
+import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import WritingSection from "@/components/portfolio/WritingSection";
 import TalksSection from "@/components/portfolio/TalksSection";
@@ -47,6 +48,7 @@ export default function Page() {
 
       <NavBar />
       <Hero />
+      <ExperienceSection />
       <ProjectsSection />
       <WritingSection />
       <TalksSection />

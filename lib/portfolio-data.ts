@@ -66,6 +66,33 @@ export const articles = [
   },
 ];
 
+export type EmploymentType = "full-time" | "contract";
+
+export interface Experience {
+  company: string;
+  title?: string;
+  period: string;
+  employment: EmploymentType;
+  achievements?: string[];
+  current?: boolean;
+}
+
+export const experience: Experience[] = [
+  {
+    company: "Heala Tech",
+    title: "Frontend Engineering Lead",
+    period: "Apr 2022 — Present",
+    employment: "full-time",
+    current: true,
+    achievements: [
+      "Built and manages a system that currently sees 10,000+ consultations go through it every month.",
+    ],
+  },
+  { company: "Company Name", period: "2020 — 2022", employment: "contract" },
+  { company: "Company Name", period: "2019 — 2020", employment: "contract" },
+  { company: "Company Name", period: "2018", employment: "contract" },
+];
+
 export type TalkType = "conference" | "online" | "meetup";
 
 export interface Talk {
