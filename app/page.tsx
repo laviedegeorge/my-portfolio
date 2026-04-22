@@ -46,8 +46,10 @@ export default function Page() {
         }
       `}</style>
 
-      <NavBar />
-      <Hero />
+      <div className="flex min-h-screen flex-col">
+        <NavBar />
+        <Hero />
+      </div>
       <ExperienceSection />
       <ProjectsSection />
       <WritingSection />
