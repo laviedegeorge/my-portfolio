@@ -21,7 +21,7 @@ export default function Hero() {
         >
           <span
             aria-label="Available for work"
-            className="h-1.5 w-1.5 rounded-full bg-green-400"
+            className="h-1.5 w-1.5 rounded-full bg-green-700"
             style={{ animation: "pulse 2s ease-in-out infinite" }}
           />
           Available for projects

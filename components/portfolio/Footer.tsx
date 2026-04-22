@@ -19,11 +19,10 @@ export default function Footer() {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[0.62rem] tracking-widest uppercase transition-opacity hover:opacity-100"
+              className="text-[0.62rem] tracking-widest uppercase transition-opacity hover:opacity-60"
               style={{
                 color: "var(--fg2)",
                 textDecoration: "none",
-                opacity: 0.5,
               }}
             >
               {platform}

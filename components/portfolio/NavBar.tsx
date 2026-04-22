@@ -34,10 +34,9 @@ export default function NavBar() {
             <li key={label} className="gb gb-nav">
               <a
                 href={href}
-                className="text-[0.65rem] tracking-[0.12em] uppercase transition-opacity duration-200 hover:opacity-100"
+                className="text-[0.65rem] tracking-[0.12em] uppercase transition-opacity duration-200 hover:opacity-60"
                 style={{
-                  color: "var(--fg)",
-                  opacity: 0.45,
+                  color: "var(--fg2)",
                   textDecoration: "none",
                 }}
               >
