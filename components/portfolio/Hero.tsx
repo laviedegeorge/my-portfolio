@@ -29,7 +29,7 @@ export default function Hero() {
             className="h-1.5 w-1.5 rounded-full bg-green-700"
             style={{ animation: "pulse 2s ease-in-out infinite" }}
           />
-          Available for projects
+          Available to jobs
         </motion.div>
 
         <motion.h1
@@ -62,7 +62,7 @@ export default function Hero() {
         >
           I&apos;m a{" "}
           <strong style={{ color: "var(--fg)", fontWeight: 500 }}>
-            product engineer
+            Product Engineer
           </strong>{" "}
           based in {siteConfig.location}. I write about the web, speak at
           conferences, and ship products at the intersection of{" "}

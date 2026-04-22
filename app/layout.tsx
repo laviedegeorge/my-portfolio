@@ -21,9 +21,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ComHealth Nigeria — Community Health for All",
+  title: "Kelechi Apugo — Lead Frontend Engineer",
   description:
-    "Empowering underserved Nigerian communities through preventive healthcare, education, and digital health tools.",
+    "Portfolio of Kelechi Apugo, a product engineer based in Port Harcourt, Nigeria. Building scalable web applications at the intersection of design and engineering.",
 };
 
 export default function RootLayout({
