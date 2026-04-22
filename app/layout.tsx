@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, DM_Mono, Plus_Jakarta_Sans } from "next/font/google";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import Providers from "./providers";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -34,10 +34,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${dmMono.variable} ${plusJakarta.variable}`}
     >
       <body className="font-sans antialiased">
-        <TooltipProvider>{children}</TooltipProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
