@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, DM_Mono, Plus_Jakarta_Sans } from "next/font/google";
-import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import "./globals.css";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
