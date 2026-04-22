@@ -7,6 +7,14 @@ export const siteConfig = {
   socials: { twitter: "#", github: "#", linkedin: "#" },
 };
 
+export const navLinks = [
+  { label: "Work", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Writing", href: "#writing" },
+  { label: "Talks", href: "#talks" },
+  { label: "Contact", href: `mailto:${siteConfig.email}` },
+];
+
 export const stats = [
   { value: "12+", label: "Projects shipped" },
   { value: "8", label: "Conference talks" },
