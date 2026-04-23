@@ -85,18 +85,18 @@ export default function PageLoader() {
 
   // ── Real browser event listeners ──────────────────────────────────────
   useEffect(() => {
+    const order: Phase[] = [
+      "typing-first",
+      "waiting-dom",
+      "waiting-load",
+      "typing-second",
+      "show-role",
+      "done",
+    ];
     const advance = (newPhase: Phase) => {
-      setPhase((p) => {
-        const order: Phase[] = [
-          "typing-first",
-          "waiting-dom",
-          "waiting-load",
-          "typing-second",
-          "show-role",
-          "done",
-        ];
-        return order.indexOf(newPhase) > order.indexOf(p) ? newPhase : p;
-      });
+      setPhase((p) =>
+        order.indexOf(newPhase) > order.indexOf(p) ? newPhase : p,
+      );
     };
 
     const onInteractive = () => {
@@ -104,24 +104,37 @@ export default function PageLoader() {
       if (firstDoneRef.current) advance("waiting-load");
     };
 
+    // Guard against double-call: load event + sync fallback check below
+    let loadHandled = false;
     const onLoad = () => {
+      if (loadHandled) return;
+      loadHandled = true;
       loadReadyRef.current = true;
       if (firstDoneRef.current) advance("typing-second");
     };
 
-    if (loadReadyRef.current) {
-      // already complete — handled when typing-first finishes
-    } else if (domReadyRef.current) {
-      window.addEventListener("load", onLoad, { once: true });
-    } else {
-      document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") onInteractive();
-        if (document.readyState === "complete") onLoad();
-      });
-      window.addEventListener("load", onLoad, { once: true });
+    const onStateChange = () => {
+      if (document.readyState === "interactive") onInteractive();
+      if (document.readyState === "complete") onLoad();
+    };
+
+    // Attach listeners FIRST — then do a synchronous state check.
+    // In SSR/Next.js, window.load can fire before useEffect runs,
+    // so we can't rely on the event alone.
+    window.addEventListener("load", onLoad, { once: true });
+    document.addEventListener("readystatechange", onStateChange);
+
+    // Synchronous fallback for already-fired events
+    if (document.readyState === "complete") {
+      onLoad();
+    } else if (document.readyState === "interactive") {
+      onInteractive();
     }
 
-    return () => window.removeEventListener("load", onLoad);
+    return () => {
+      window.removeEventListener("load", onLoad);
+      document.removeEventListener("readystatechange", onStateChange);
+    };
   }, []);
 
   // ── Type FIRST name immediately on mount ──────────────────────────────
