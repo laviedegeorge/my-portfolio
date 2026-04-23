@@ -5,7 +5,7 @@ export const siteConfig = {
   email: "laviedegeorge1292@gmail.com",
   available: true,
   socials: {
-    twitter: "#",
+    x: "https://x.com/LaVieDeGEORGE",
     github: "https://github.com/laviedegeorge",
     linkedin: "https://www.linkedin.com/in/kelechi-apugo-16729846",
   },

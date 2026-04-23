@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { siteConfig, navLinks } from "@/lib/portfolio-data";
 import ThemeToggle from "./ThemeToggle";
 import MobileMenu from "./MobileMenu";
+import ContactPopover from "./ContactPopover";
 
 export default function NavBar() {
   return (
@@ -33,13 +34,17 @@ export default function NavBar() {
         <ul className="m-0 flex list-none items-center gap-7 p-0">
           {navLinks.map(({ label, href }) => (
             <li key={label} className="gb gb-nav">
-              <a
-                href={href}
-                className="text-[0.65rem] tracking-[0.12em] uppercase transition-opacity duration-200 hover:opacity-60"
-                style={{ color: "var(--fg2)", textDecoration: "none" }}
-              >
-                {label}
-              </a>
+              {label === "Contact" ? (
+                <ContactPopover />
+              ) : (
+                <a
+                  href={href}
+                  className="text-[0.65rem] tracking-[0.12em] uppercase transition-opacity duration-200 hover:opacity-60"
+                  style={{ color: "var(--fg2)", textDecoration: "none" }}
+                >
+                  {label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
