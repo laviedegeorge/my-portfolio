@@ -8,6 +8,7 @@ import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import WritingSection from "@/components/portfolio/WritingSection";
 import TalksSection from "@/components/portfolio/TalksSection";
 import Footer from "@/components/portfolio/Footer";
+import PageLoader from "@/components/portfolio/PageLoader";
 
 export default function Page() {
   const { isLight, vars } = useThemeVars();
@@ -17,6 +18,7 @@ export default function Page() {
       className="relative min-h-screen overflow-hidden font-mono transition-colors duration-300"
       style={{ background: "var(--bg)", color: "var(--fg)", ...vars }}
     >
+      <PageLoader />
       <GridCanvas isLight={isLight} />
 
       <div

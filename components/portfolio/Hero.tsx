@@ -62,7 +62,7 @@ export default function Hero() {
         >
           I&apos;m a{" "}
           <strong style={{ color: "var(--fg)", fontWeight: 500 }}>
-            Product Engineer
+            Software Engineer
           </strong>{" "}
           based in {siteConfig.location}. I write about the web, speak at
           conferences, and ship products at the intersection of{" "}

@@ -19,13 +19,6 @@ export const navLinks = [
   { label: "Contact", href: `mailto:${siteConfig.email}` },
 ];
 
-export const stats = [
-  { value: "12+", label: "Projects shipped" },
-  { value: "8", label: "Conference talks" },
-  { value: "40+", label: "Articles written" },
-  { value: "5yr", label: "In the craft" },
-];
-
 export const projects = [
   {
     title: "Next.js 14 Sample Dashboard",
@@ -246,6 +239,24 @@ export interface Volunteer {
 }
 
 export const volunteers: Volunteer[] = [];
+
+const craftStartYear = Math.min(
+  ...experience.map((e) => {
+    const match = e.period.match(/(\d{4})/);
+    return match ? parseInt(match[1]) : new Date().getFullYear();
+  }),
+);
+const yearsInCraft = new Date().getFullYear() - craftStartYear;
+
+export const stats = [
+  {
+    value: `${projects.length}+`,
+    label: "Projects shipped",
+  },
+  { value: `${talks.length}`, label: "Talks & judging" },
+  { value: `${articles.length}+`, label: "Articles written" },
+  { value: `${yearsInCraft}yrs`, label: "In the craft" },
+];
 
 export type Project = (typeof projects)[number];
 export type Article = (typeof articles)[number];
