@@ -15,7 +15,7 @@ export default function Page() {
 
   return (
     <main
-      className="relative min-h-screen overflow-hidden font-mono transition-colors duration-300"
+      className="relative min-h-screen font-mono transition-colors duration-300"
       style={{ background: "var(--bg)", color: "var(--fg)", ...vars }}
     >
       <PageLoader />
@@ -48,8 +48,8 @@ export default function Page() {
         }
       `}</style>
 
+      <NavBar />
       <div className="flex min-h-screen flex-col">
-        <NavBar />
         <Hero />
       </div>
       <ExperienceSection />

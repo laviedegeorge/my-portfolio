@@ -24,7 +24,31 @@ function LinkedInIcon() {
   );
 }
 
+function MailIcon() {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
+
 const socialLinks = [
+  {
+    key: "email",
+    label: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
+    icon: <MailIcon />,
+  },
   { key: "x", label: "X", href: siteConfig.socials.x, icon: <XIcon /> },
   {
     key: "github",
@@ -38,7 +62,7 @@ const socialLinks = [
     href: siteConfig.socials.linkedin,
     icon: <LinkedInIcon />,
   },
-].filter(({ href }) => href !== "#");
+].filter(({ href }) => !href.endsWith("#"));
 
 export default function Footer() {
   return (
@@ -57,17 +81,17 @@ export default function Footer() {
           <span key={key} className="gb gb-nav">
             <a
               href={href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={key === "email" ? undefined : "_blank"}
+              rel={key === "email" ? undefined : "noopener noreferrer"}
               aria-label={label}
               className="flex items-center transition-opacity hover:opacity-60"
               style={{ color: "var(--fg2)", textDecoration: "none" }}
             >
               {/* Icon-only on mobile */}
               <span className="md:hidden">{icon}</span>
-              {/* Text-only on desktop */}
+              {/* Text/label on desktop */}
               <span className="hidden text-[0.62rem] tracking-widest uppercase md:inline">
-                {label}
+                {key === "email" ? label : label}
               </span>
             </a>
           </span>
