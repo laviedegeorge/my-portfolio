@@ -1,5 +1,3 @@
-"use client";
-import { motion } from "motion/react";
 import { experience, type EmploymentType } from "@/lib/portfolio-data";
 import Section from "./Section";
 
@@ -22,11 +20,7 @@ export default function ExperienceSection() {
       <div className="flex flex-col gap-5">
         {/* ── Current role ── */}
         {current && (
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          <div
             className="rounded border p-6"
             style={{ borderColor: "var(--border)" }}
           >
@@ -92,23 +86,15 @@ export default function ExperienceSection() {
                 {achievement}
               </p>
             ))}
-          </motion.div>
+          </div>
         )}
 
         {/* ── Previous roles ── */}
         {previous.length > 0 && (
           <div className="flex flex-col">
             {previous.map((exp, i) => (
-              <motion.div
+              <div
                 key={`${exp.company}-${i}`}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  ease: [0.22, 1, 0.36, 1],
-                  delay: i * 0.07,
-                }}
                 className="flex items-center justify-between py-4"
                 style={{ borderBottom: "1px solid var(--border)" }}
               >
@@ -132,7 +118,7 @@ export default function ExperienceSection() {
                     {exp.period}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         )}

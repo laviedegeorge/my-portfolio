@@ -8,18 +8,28 @@ export default function GridCanvas({ isLight }: { isLight: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({ x: -999, y: -999 });
   const raf = useRef(0);
+  const dirty = useRef(true);
 
   const draw = useCallback(() => {
+    raf.current = requestAnimationFrame(draw);
+
+    if (!dirty.current) return;
+    dirty.current = false;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
     const W = canvas.width;
     const H = canvas.height;
     const { x: mx, y: my } = mouse.current;
+
     ctx.clearRect(0, 0, W, H);
+
     const cols = Math.ceil(W / CELL) + 1;
     const rows = Math.ceil(H / CELL) + 1;
+
     for (let c = 0; c <= cols; c++) {
       const px = c * CELL;
       for (let r = 0; r <= rows; r++) {
@@ -46,35 +56,39 @@ export default function GridCanvas({ isLight }: { isLight: boolean }) {
         }
       }
     }
-    raf.current = requestAnimationFrame(draw);
   }, [isLight]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const parent = canvas.parentElement!;
+
     const resize = () => {
-      canvas.width = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      dirty.current = true;
     };
     resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(parent);
+    window.addEventListener("resize", resize);
+
     const onMove = (e: MouseEvent) => {
-      const rect = parent.getBoundingClientRect();
-      mouse.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      mouse.current = { x: e.clientX, y: e.clientY };
+      dirty.current = true;
     };
     const onLeave = () => {
       mouse.current = { x: -999, y: -999 };
+      dirty.current = true;
     };
-    parent.addEventListener("mousemove", onMove);
-    parent.addEventListener("mouseleave", onLeave);
+
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseleave", onLeave);
+
     raf.current = requestAnimationFrame(draw);
+
     return () => {
       cancelAnimationFrame(raf.current);
-      ro.disconnect();
-      parent.removeEventListener("mousemove", onMove);
-      parent.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseleave", onLeave);
     };
   }, [draw]);
 
@@ -82,7 +96,7 @@ export default function GridCanvas({ isLight }: { isLight: boolean }) {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      className="pointer-events-none fixed inset-0 z-0"
     />
   );
 }

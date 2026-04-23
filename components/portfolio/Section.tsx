@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { useInView } from "motion/react";
 
 interface SectionProps {
   id: string;
@@ -29,13 +29,14 @@ export default function Section({ id, label, children }: SectionProps) {
       >
         {label}
       </p>
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      <div
+        style={{
+          opacity: inView ? 1 : 0,
+          transition: "opacity 0.5s linear",
+        }}
       >
         {children}
-      </motion.div>
+      </div>
     </section>
   );
 }

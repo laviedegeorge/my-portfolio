@@ -29,16 +29,19 @@ export default function NavBar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
       className="sticky top-0 z-20 flex items-center justify-between px-6 py-5 md:px-9"
-      style={{
-        borderBottom: "1px solid var(--border)",
-        background: scrolled
-          ? "color-mix(in srgb, var(--bg) 72%, transparent)"
-          : "var(--bg)",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
-        transition: "background 0.35s ease, backdrop-filter 0.35s ease",
-      }}
+      style={{ borderBottom: "1px solid var(--border)" }}
     >
+      {/* Blur layer — separate child so backdropFilter never makes <header>
+          a containing block for position:fixed descendants (mobile overlay) */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 transition-opacity duration-300"
+        style={{
+          opacity: scrolled ? 1 : 0,
+          background: "color-mix(in srgb, var(--bg) 72%, transparent)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+        }}
+      />
       <a
         href="/"
         aria-label={`${siteConfig.name} — home`}

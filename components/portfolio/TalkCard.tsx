@@ -1,6 +1,4 @@
-"use client";
 import Image from "next/image";
-import { motion } from "motion/react";
 import type { Talk, TalkType, TalkRole } from "@/lib/portfolio-data";
 
 const typeBadgeStyle = (type: TalkType): React.CSSProperties =>
@@ -15,23 +13,9 @@ const roleBadgeStyle = (role: TalkRole): React.CSSProperties =>
     ? { background: "#FEF3E2", color: "#7C4A0C" }
     : { background: "#F0FDF4", color: "#166534" };
 
-export default function TalkCard({
-  talk,
-  index,
-}: {
-  talk: Talk;
-  index: number;
-}) {
+export default function TalkCard({ talk }: { talk: Talk; index: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.4,
-        ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.09,
-      }}
+    <div
       className="gb flex items-start gap-4 rounded border p-4"
       style={{ borderColor: "var(--border)" }}
     >
@@ -94,6 +78,6 @@ export default function TalkCard({
           />
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }
