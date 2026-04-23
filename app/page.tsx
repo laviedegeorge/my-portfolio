@@ -49,7 +49,10 @@ export default function Page() {
       `}</style>
 
       <NavBar />
-      <div className="flex min-h-screen flex-col">
+      <div
+        className="flex flex-col"
+        style={{ minHeight: "calc(100dvh - 4.5rem)" }}
+      >
         <Hero />
       </div>
       <ExperienceSection />
