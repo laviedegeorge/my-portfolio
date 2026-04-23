@@ -28,26 +28,28 @@ export const stats = [
 
 export const projects = [
   {
-    title: "Project One",
+    title: "Next.js 14 Sample Dashboard",
     description:
-      "A brief description of what this project does and why it matters.",
-    tags: ["Next.js", "TypeScript", "Postgres"],
-    url: "#",
+      "A full-stack dashboard with authentication, data tables, and CRUD operations — built to demonstrate Next.js App Router patterns at scale.",
+    tags: ["Next.js 14", "TypeScript", "Postgres"],
+    url: "https://laviedegeorge-sample-dashboard.vercel.app/",
     year: 2024,
   },
   {
-    title: "Project Two",
-    description: "Another project that solved a real problem for real people.",
-    tags: ["React", "Motion", "Tailwind"],
-    url: "#",
-    year: 2024,
+    title: "Able Hoops",
+    description:
+      "Website for an inclusive basketball organisation in Victoria, Australia — featuring programme listings, coaching tiers, and participant registration.",
+    tags: ["Next.js", "TypeScript", "Tailwind"],
+    url: "https://able-hoops.vercel.app/",
+    year: 2025,
   },
   {
-    title: "Project Three",
-    description: "Open source tool used by developers across West Africa.",
-    tags: ["Node.js", "API", "OSS"],
-    url: "#",
-    year: 2023,
+    title: "Crevatal",
+    description:
+      "Marketing site for a blockchain UX design agency focused on making Web3 products intuitive for mainstream users.",
+    tags: ["Next.js", "TypeScript", "Tailwind"],
+    url: "https://crevatal-sample.vercel.app",
+    year: 2021,
   },
 ];
 
@@ -188,43 +190,62 @@ export const experience: Experience[] = [
 ];
 
 export type TalkType = "conference" | "online" | "meetup";
+export type TalkRole = "speaker" | "judge";
 
 export interface Talk {
   title: string;
   event: string;
   year: string;
   type: TalkType;
+  role: TalkRole;
+  image?: string;
   url?: string;
 }
 
 export const talks: Talk[] = [
   {
-    title: "Design Tokens at the Edge",
-    event: "JSConf Lagos",
-    year: "2024",
-    type: "conference",
-    url: "#",
-  },
-  {
-    title: "Motion Design for Engineers",
-    event: "Frontend Nigeria",
-    year: "2024",
+    title:
+      "From Learning to Real Skills: How to Apply What You Learn in Any Role",
+    event: "DevCareer x Coursera",
+    year: "2026",
     type: "online",
-    url: "#",
+    role: "speaker",
+    image: "/talks/devcareer.webp",
   },
   {
-    title: "Shipping Fast Without Breaking",
-    event: "DevFest Port Harcourt",
-    year: "2023",
+    title: "NextGen Knowledge Showcase Pitch Day",
+    event: "3MTT x NITDA x Airtel Africa Foundation x Quantum Business School",
+    year: "2026",
     type: "conference",
+    role: "judge",
+    image: "/talks/nextgen.webp",
   },
   {
-    title: "CSS Architecture That Scales",
-    event: "Naija Dev Meetup",
+    title: "Innovate 360",
+    event: "NACOS Uniport x GDG Port Harcourt",
+    year: "2025",
+    type: "conference",
+    role: "speaker",
+    image: "/talks/innovate360.webp",
+  },
+  {
+    title: "Tech and Mental Health: The Good, The Bad and The Ugly",
+    event: "Dantown",
     year: "2023",
-    type: "meetup",
+    type: "online",
+    role: "speaker",
+    image: "/talks/dantown.webp",
   },
 ];
+
+export interface Volunteer {
+  title: string;
+  organisation: string;
+  year: string;
+  description?: string;
+}
+
+export const volunteers: Volunteer[] = [];
 
 export type Project = (typeof projects)[number];
 export type Article = (typeof articles)[number];
