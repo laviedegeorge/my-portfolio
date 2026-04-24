@@ -1,53 +1,57 @@
+import FadeIn from "./FadeIn";
 import type { Project } from "@/lib/portfolio-data";
 
 export default function ProjectCard({
   project,
+  index,
 }: {
   project: Project;
   index: number;
 }) {
   return (
-    <div
-      className="gb flex h-full flex-col rounded border p-5"
-      style={{ borderColor: "var(--border)" }}
-    >
-      <span
-        className="mb-4 text-[0.58rem] tracking-widest uppercase"
-        style={{ color: "var(--fg3)" }}
+    <FadeIn delay={index * 0.1} className="h-full">
+      <div
+        className="gb flex h-full flex-col rounded border p-5"
+        style={{ borderColor: "var(--border)" }}
       >
-        {project.year}
-      </span>
-      <h3
-        className="mb-2 text-[0.88rem] font-medium leading-snug tracking-[-0.01em]"
-        style={{ color: "var(--fg)" }}
-      >
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition-opacity hover:opacity-60"
-          style={{ textDecoration: "none", color: "inherit" }}
+        <span
+          className="mb-4 text-[0.58rem] tracking-widest uppercase"
+          style={{ color: "var(--fg3)" }}
         >
-          {project.title} ↗
-        </a>
-      </h3>
-      <p
-        className="mb-5 flex-1 text-[0.72rem] leading-relaxed"
-        style={{ color: "var(--fg2)" }}
-      >
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-1.5">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full border px-2 py-0.5 text-[0.58rem] tracking-[0.06em] uppercase"
-            style={{ borderColor: "var(--border)", color: "var(--fg3)" }}
+          {project.year}
+        </span>
+        <h3
+          className="mb-2 text-[0.88rem] font-medium leading-snug tracking-[-0.01em]"
+          style={{ color: "var(--fg)" }}
+        >
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-opacity hover:opacity-60"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            {tag}
-          </span>
-        ))}
+            {project.title} ↗
+          </a>
+        </h3>
+        <p
+          className="mb-5 flex-1 text-[0.72rem] leading-relaxed"
+          style={{ color: "var(--fg2)" }}
+        >
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border px-2 py-0.5 text-[0.58rem] tracking-[0.06em] uppercase"
+              style={{ borderColor: "var(--border)", color: "var(--fg3)" }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
+    </FadeIn>
   );
 }

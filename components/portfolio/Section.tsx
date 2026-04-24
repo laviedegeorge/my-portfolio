@@ -1,7 +1,3 @@
-"use client";
-import { useRef } from "react";
-import { useInView } from "motion/react";
-
 interface SectionProps {
   id: string;
   label: string;
@@ -9,13 +5,9 @@ interface SectionProps {
 }
 
 export default function Section({ id, label, children }: SectionProps) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <section
       id={id}
-      ref={ref}
       aria-labelledby={`${id}-heading`}
       className="relative z-10 px-9 py-20"
       style={{ borderTop: "1px solid var(--border)" }}
@@ -29,14 +21,7 @@ export default function Section({ id, label, children }: SectionProps) {
       >
         {label}
       </p>
-      <div
-        style={{
-          opacity: inView ? 1 : 0,
-          transition: "opacity 0.5s linear",
-        }}
-      >
-        {children}
-      </div>
+      {children}
     </section>
   );
 }
