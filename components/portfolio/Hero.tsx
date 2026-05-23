@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "motion/react";
-import { siteConfig, stats } from "@/lib/portfolio-data";
+import { stats } from "@/lib/portfolio-data";
 import ScrollIndicator from "./ScrollIndicator";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -29,7 +29,7 @@ export default function Hero() {
             className="h-1.5 w-1.5 rounded-full bg-green-700"
             style={{ animation: "pulse 2s ease-in-out infinite" }}
           />
-          Available to jobs
+          Available
         </motion.div>
 
         <motion.h1
@@ -39,7 +39,7 @@ export default function Hero() {
           className="mb-6 font-serif leading-[1.08] tracking-[-0.03em]"
           style={{ color: "var(--fg)", fontSize: "clamp(2.4rem, 6vw, 4rem)" }}
         >
-          Building things
+          Building products
           <br />
           <em style={{ color: "var(--fg2)", fontStyle: "italic" }}>people </em>
           actually use
@@ -63,9 +63,9 @@ export default function Hero() {
           I&apos;m a{" "}
           <strong style={{ color: "var(--fg)", fontWeight: 500 }}>
             Software Engineer
-          </strong>{" "}
-          based in {siteConfig.location}. I write about the web, speak at
-          conferences, and ship products at the intersection of{" "}
+          </strong>
+          . I write about the web, speak at conferences, and ship products at
+          the intersection of{" "}
           <strong style={{ color: "var(--fg)", fontWeight: 500 }}>
             design and engineering
           </strong>
