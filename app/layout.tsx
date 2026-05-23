@@ -24,10 +24,93 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://laviedegeorge.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Kelechi Apugo — Lead Frontend Engineer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Kelechi Apugo — Lead Frontend Engineer",
+    template: "%s | Kelechi Apugo",
+  },
   description:
-    "Portfolio of Kelechi Apugo, a product engineer based in Port Harcourt, Nigeria. Building scalable web applications at the intersection of design and engineering.",
+    "Software Engineer specialising in frontend architecture and product engineering. Building scalable web applications at the intersection of design and engineering.",
+  keywords: [
+    "Kelechi Apugo",
+    "Kelechi George Apugo",
+    "Apugo George Kelechi",
+    "Apugo Kelechi",
+    "Frontend Engineer",
+    "Software Engineer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Web Development",
+    "UI Engineering",
+    "Product Engineer",
+  ],
+  authors: [{ name: "Kelechi Apugo", url: siteUrl }],
+  creator: "Kelechi Apugo",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Kelechi Apugo",
+    title: "Kelechi Apugo — Lead Frontend Engineer",
+    description:
+      "Software Engineer specialising in frontend architecture and product engineering. Building scalable web applications at the intersection of design and engineering.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Kelechi Apugo — Lead Frontend Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kelechi Apugo — Lead Frontend Engineer",
+    description:
+      "Software Engineer specialising in frontend architecture and product engineering.",
+    creator: "@LaVieDeGEORGE",
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Kelechi Apugo",
+  url: siteUrl,
+  jobTitle: "Lead Frontend Engineer",
+  sameAs: [
+    "https://x.com/LaVieDeGEORGE",
+    "https://github.com/laviedegeorge",
+    "https://www.linkedin.com/in/kelechi-apugo-16729846",
+  ],
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Frontend Architecture",
+    "Web Performance",
+    "UI Engineering",
+  ],
 };
 
 export default function RootLayout({
@@ -41,6 +124,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fraunces.variable} ${dmMono.variable} ${plusJakarta.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased">
         <Providers>{children}</Providers>
       </body>
