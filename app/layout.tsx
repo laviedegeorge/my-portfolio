@@ -6,18 +6,22 @@ import "./globals.css";
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
+  display: "swap",
 });
 
 const dmMono = DM_Mono({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   variable: "--font-dm-mono",
+  display: "swap",
+  preload: false,
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-plus-jakarta",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
