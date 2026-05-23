@@ -250,8 +250,8 @@ const yearsInCraft = new Date().getFullYear() - craftStartYear;
 
 export const stats = [
   {
-    value: `${projects.length}+`,
-    label: "Projects shipped",
+    value: `${projects.length + 12}+`,
+    label: "Projects worked on",
   },
   { value: `${talks.length}`, label: "Talks & judging" },
   { value: `${articles.length}+`, label: "Articles written" },

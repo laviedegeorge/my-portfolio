@@ -131,6 +131,9 @@ function MenuOverlay({ onClose }: { onClose: () => void }) {
 
   return (
     <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -194,6 +197,8 @@ function MenuOverlay({ onClose }: { onClose: () => void }) {
                 {/* Contact toggle row */}
                 <button
                   onClick={() => setContactOpen((v) => !v)}
+                  aria-expanded={contactOpen}
+                  aria-controls="mobile-contact-panel"
                   className="group flex w-full items-baseline gap-5 py-4"
                   style={{
                     background: "none",
@@ -239,6 +244,7 @@ function MenuOverlay({ onClose }: { onClose: () => void }) {
                 <AnimatePresence initial={false}>
                   {contactOpen && (
                     <motion.div
+                      id="mobile-contact-panel"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -283,6 +289,7 @@ function MenuOverlay({ onClose }: { onClose: () => void }) {
                           <button
                             onClick={handleCopy}
                             title={copied ? "Copied!" : "Copy email"}
+                            aria-label={copied ? "Copied!" : "Copy email"}
                             className="shrink-0 rounded p-1.5 transition-opacity hover:opacity-60"
                             style={{
                               color: copied ? "var(--fg)" : "var(--fg3)",

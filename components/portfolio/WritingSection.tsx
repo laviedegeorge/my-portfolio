@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { articles } from "@/lib/portfolio-data";
 import Section from "./Section";
 import ArticleRow from "./ArticleRow";
-import TabBar from "./TabBar";
+import TabBar, { tabButtonId, tabPanelId } from "./TabBar";
 
 const tabs = ["Technical", "Personal"] as const;
 type Tab = (typeof tabs)[number];
@@ -23,12 +23,17 @@ export default function WritingSection() {
         active={active}
         onChange={(t) => setActive(t as Tab)}
         layoutId="writing-tab-pill"
+        label="Writing categories"
       />
 
       {/* Article list */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
+          role="tabpanel"
+          id={tabPanelId("writing-tab-pill", active)}
+          aria-labelledby={tabButtonId("writing-tab-pill", active)}
+          tabIndex={0}
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}

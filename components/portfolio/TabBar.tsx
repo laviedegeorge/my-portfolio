@@ -37,6 +37,15 @@ interface TabBarProps {
   active: string;
   onChange: (tab: string) => void;
   layoutId: string;
+  label?: string;
+}
+
+export function tabButtonId(layoutId: string, tab: string) {
+  return `${layoutId}-tab-${tab.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+}
+
+export function tabPanelId(layoutId: string, tab: string) {
+  return `${layoutId}-panel-${tab.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 }
 
 export default function TabBar({
@@ -44,11 +53,14 @@ export default function TabBar({
   active,
   onChange,
   layoutId,
+  label,
 }: TabBarProps) {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
   return (
     <div
+      role="tablist"
+      aria-label={label}
       className="mb-8 flex w-fit gap-1 rounded-full border p-1"
       style={{ borderColor: "var(--border)", background: "var(--pill)" }}
     >
@@ -57,12 +69,16 @@ export default function TabBar({
         return (
           <button
             key={tab}
+            role="tab"
+            id={tabButtonId(layoutId, tab)}
+            aria-selected={isActive}
+            aria-controls={tabPanelId(layoutId, tab)}
             onClick={() => onChange(tab)}
             onMouseEnter={() => setHoveredTab(tab)}
             onMouseLeave={() => setHoveredTab(null)}
             className="relative rounded-full px-5 py-1.5 text-[0.62rem] tracking-[0.1em] uppercase"
             style={{
-              color: isActive ? "var(--btn-fg)" : "var(--fg3)",
+              color: isActive ? "var(--btn-fg)" : "var(--fg2)",
               background: "transparent",
               border: "none",
               cursor: "pointer",

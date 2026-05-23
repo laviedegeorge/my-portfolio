@@ -134,7 +134,8 @@ export default function ContactPopover() {
           padding: 0,
         }}
         aria-expanded={open}
-        aria-haspopup="true"
+        aria-haspopup="dialog"
+        aria-controls="contact-popover"
       >
         Contact
       </button>
@@ -142,6 +143,9 @@ export default function ContactPopover() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="contact-popover"
+            role="dialog"
+            aria-label="Contact options"
             initial={{ opacity: 0, y: 6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 6, scale: 0.97 }}
@@ -199,6 +203,7 @@ export default function ContactPopover() {
                 <button
                   onClick={handleCopy}
                   title={copied ? "Copied!" : "Copy email"}
+                  aria-label={copied ? "Copied!" : "Copy email"}
                   className="ml-1 shrink-0 rounded p-1 transition-colors duration-150"
                   style={{
                     color: copied ? "var(--fg)" : "var(--fg3)",
